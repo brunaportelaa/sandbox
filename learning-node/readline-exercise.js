@@ -2,12 +2,14 @@ const collectAnswers = require('./lib/collectAnswers')
 
 const questions = [
     "What is the meaning of life",
-    "What is yout favorite book?",
-    "What is yout favorite pop diva?",
+    "What is your favorite book?",
+    "What is your favorite pop diva?",
 ]
 
-collectAnswers(questions, (answers) => {
+const answerEvents = collectAnswers(questions, (answers) => {
     console.log(answers)
     process.exit()
 })
+
+answerEvents.on('answer', answer => console.log(`the answer is ${answer}`))
 
