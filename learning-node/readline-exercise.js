@@ -1,6 +1,6 @@
-const rl = require('readline')
+const readline = require('readline')
 
-rl.createInterface({
+const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
 })
@@ -8,24 +8,26 @@ rl.createInterface({
 const questions = [
     "What is the meaning of life",
     "What is yout favorite book?",
-    "What is yout favorite pop diva?"
+    "What is yout favorite pop diva?",
 ]
 
-function collectAnswers(questions, done) {
-    const answers = []
 
+function collectAnswers(questions, done) {
+
+    const answers = []
     const questionAnswered = answer => {
-        answer.push(answer.trim())
+        answers.push(answer.trim())
 
         if(answers.length < questions.length) {
-            rl.question(questions[answer.length], questionAnswered)
+            rl.question(questions[answers.length], questionAnswered)
         } else {
             return done(answers)
         }
     }
+    rl.question(questions[0], questionAnswered)
 }
 
-collectAnswers(questions, () => {
+collectAnswers(questions, (answers) => {
     console.log(answers)
     process.exit()
 })
