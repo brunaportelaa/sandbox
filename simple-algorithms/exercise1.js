@@ -3,12 +3,12 @@
 // You're organizing a treasure hunt! The treasure is hidden in one of the 100 boxes lined up in a row. Each box is numbered from 1 to 100. You know that the treasure is in box number X but you forgot which one it is. Use the guess and check method to find the treasure
 
 const treasure = Math.ceil(Math.random()* 100) 
-console.log(treasure)
+// console.log(treasure)
 guess = 0
 
 while(guess<=treasure) {
     if (guess === treasure) {
-        console.log(`Treasure is at box number ${guess}`)
+        // console.log(`Treasure is at box number ${guess}`)
         break
     } else {
         guess++
@@ -26,13 +26,35 @@ const increment = 7
 while (sugar <= sugarNeeded) {
     if (sugar < sugarNeeded) {
         sugar += increment
-        console.log(`You now have ${sugar} grams of sugar`)
+        // console.log(`You now have ${sugar} grams of sugar`)
     }
 }
 
-console.log(`Perfect! Now you have ${sugar} grams of sugar, which is close enough to the required amount`)
+// console.log(`Perfect! Now you have ${sugar} grams of sugar, which is close enough to the required amount`)
 
 
 // Challenge 3: Bisection Method
 // Problem:
 // You are trying to find the square root of a number using the bisection method. You know that the square root of X lies between 0 and X for any positive number X.
+
+let x = 25
+epsilon = 0.01
+numGuesses = 0
+low = 0
+high = Math.max(1, x)
+let ans = (high + low)/2
+
+while(Math.abs(ans**2 - x) >= epsilon) {
+    console.log('low =', low, 'high =', high, 'ans =', ans)
+    numGuesses += 1
+    if (ans**2 < x) {
+        low = ans
+    } else {
+        high = ans
+    }
+
+    ans = (high + low) / 2
+}
+
+console.log('numGuesses =', numGuesses)
+console.log(ans,'is close to square root of', x)
